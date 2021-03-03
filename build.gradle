@@ -1,0 +1,37 @@
+plugins {
+    id 'org.springframework.boot' version '2.2.4.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+    id 'java'
+}
+
+group = 'com.wenky'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+    // in the first position of the list make
+    // ~/.m2/repository library available at first
+    mavenLocal()
+    mavenCentral()
+}
+
+task runFormat(type: JavaExec) {
+    def mainJavaFiles = sourceSets.main.allJava.files
+    classpath = sourceSets.main.runtimeClasspath
+    main 'com.google.googlejavaformat.java.Main'
+    args '--replace'
+    args mainJavaFiles
+    args sourceSets.test.allJava.files
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    // 1.1 添加aop功能
+    implementation 'com.wenky:spring-boot-starter-custom:+'
+    implementation 'com.google.googlejavaformat:google-java-format:1.7'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+test {
+    useJUnitPlatform()
+}

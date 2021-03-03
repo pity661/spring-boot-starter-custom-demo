@@ -1,0 +1,45 @@
+# jar中配置文件为.yaml，则引用项目中需为.yml才能覆盖
+server:
+  servlet:
+    context-path: /wenky
+logging:
+  file:
+    name: bizLog.log
+    clean-history-on-start: true
+#    path: ${pwd}
+    max-history: 30
+#  level: debug
+
+wenky:
+  # health check config
+  health:
+    # curl http://127.0.0.1:8080/wenky/health/online
+    online: false
+    # curl http://127.0.0.1:8080/wenky/health
+    # 仅在online为true时返回ok，否则响应http状态码为500
+    path: health
+  # mail config
+  mail:
+    enable: false
+  # aspect config
+  aspect:
+    controller: disable
+  # example config
+  auto:
+    map:
+      wenky:
+        aaa: wenky
+      bbb: wenky1
+    string: TWO
+    auto-enum: second
+    #    a-long: 2
+    integer: 2
+    # list config
+    list: [ s,1,2 ]
+  condition:
+    enable: true
+# 打开注释 Runner1: EnableProperties、ImportProperties变为true
+#  import:
+#    enable: true
+#  enable:
+#    enable: true
