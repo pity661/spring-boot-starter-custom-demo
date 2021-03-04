@@ -13,17 +13,18 @@ logging:
 wenky:
   # health check config
   health:
-    # curl http://127.0.0.1:8080/wenky/health/online
-    online: false
+    # curl http://127.0.0.1:8080/wenky/switch/change/offline
+    online: true
     # curl http://127.0.0.1:8080/wenky/health
     # 仅在online为true时返回ok，否则响应http状态码为500
+    # 自定义health健康检查接口
     path: health
   # mail config
   mail:
     enable: false
   # aspect config
   aspect:
-    controller: disable
+    controller: enable
   # example config
   auto:
     map:

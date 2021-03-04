@@ -5,9 +5,9 @@ package com.wenky.spring.demo.model.controller.param;
  * @description:
  * @author: wenky
  * @email: huwenqi@panda-fintech.com
- * @create: 2021-03-03 10:31
+ * @create: 2021-03-03 18:08
  */
-public class UnderlineToCamelParam {
+public class VerifyParam extends AbstractVerifyParam {
   private Long appKey;
   private String appName;
 

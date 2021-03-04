@@ -1,6 +1,8 @@
 package com.wenky.spring.demo.controller;
 
 import com.wenky.spring.demo.model.controller.param.UnderlineToCamelParam;
+import com.wenky.spring.demo.model.controller.param.VerifyParam;
+import com.wenky.starter.custom.aspect.controller.verify.NotVerify;
 import com.wenky.starter.custom.config.annotation.LineToCamel;
 import com.wenky.starter.custom.util.LoggerUtils;
 import org.springframework.http.ResponseEntity;
@@ -19,12 +21,24 @@ public class TestController {
 
   @RequestMapping("/check")
   public ResponseEntity<String> check() {
-    int a = 1/0;
+    int a = 1 / 0;
     return ResponseEntity.ok("ok");
   }
 
   @RequestMapping("/param")
   public ResponseEntity<String> underlineToCamel(@LineToCamel UnderlineToCamelParam param) {
+    LoggerUtils.info(param);
+    return ResponseEntity.ok("ok");
+  }
+
+  @RequestMapping("/not-verify-param")
+  public ResponseEntity<String> notVerifyParam(@NotVerify @LineToCamel VerifyParam param) {
+    LoggerUtils.info(param);
+    return ResponseEntity.ok("ok");
+  }
+
+  @RequestMapping("/verify-param")
+  public ResponseEntity<String> verifyParam(@LineToCamel VerifyParam param) {
     LoggerUtils.info(param);
     return ResponseEntity.ok("ok");
   }

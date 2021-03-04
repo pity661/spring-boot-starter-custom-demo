@@ -26,13 +26,13 @@ public class Runner1 implements CommandLineRunner {
     // autoConfigurationInfo();
 
     // 打印mail信息,并发送测试邮件
-//    testEmailSend();
+    //    testEmailSend();
   }
 
   private void testEmailSend() {
     // mailTemplate bean是否注入
     LoggerUtils.info(
-            String.format("MailTemplate:[%s]", SpringContextHolder.contains("mailTemplate")));
+        String.format("MailTemplate:[%s]", SpringContextHolder.contains("mailTemplate")));
     MailTemplate mailTemplate = SpringContextHolder.getBean(MailTemplate.class);
     LoggerUtils.info(String.format("MailTemplate:[%s]", mailTemplate));
     mailTemplate.sendEmailTemplate();
